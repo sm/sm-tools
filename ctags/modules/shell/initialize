@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Use package_definition() to define the package_base_url as it is on
+# sourceforge and must be set based on the package_version.
+package_definition \
+  base_url "http://downloads.sourceforge.net/project/ctags/ctags/${package_version}"

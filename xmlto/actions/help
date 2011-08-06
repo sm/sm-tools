@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+description "${extension} BDSM extension."
+
+action "package install" "Installs xmlto package."
+action "package uninstall" "Uninstalls xmlto package."
+action "help" "Display help for ${extension}."
+
+show_help usage

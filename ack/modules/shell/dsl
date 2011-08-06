@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+package_install()
+{
+  ensure_paths_exist "${source_path}/${package_dir}/bin" "${install_path}/bin"
+
+  curl \
+    -L http://betterthangrep.com/ack-standalone \
+    -o "${source_path}/${package_dir}/bin/ack"
+
+  ensure_files_are_executable "${source_path}/${package_dir}/bin/ack"
+
+  cp -f  "${source_path}/${package_dir}/bin/ack" \
+    "${install_path}/bin/ack"
+}
+

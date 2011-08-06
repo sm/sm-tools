@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+openpkg_install() {
+  #
+  # OpenPKG
+  #
+  # http://www.openpkg.org/
+  #
+  source "${extension_scripts_path}/bash/functions"
+
+  if ! command -v curl >/dev/null 2>&1
+  then
+    fail "curl command was not found, please install curl then retry."
+  fi
+
+  if [[ -s openpkg-*-*.*-openpkg.sh ]]
+  then
+    # install bootstrap binary script package
+    source_file=openpkg-*-*.*-openpkg.sh
+  else
+    curl -O -L "${url}"
+    source_file=openpkg.src.sh
+  fi
+
+  sh ${source_file} \
+    --prefix=${prefix} \
+    --tag=openpkg \
+    --user=${group} \
+    --group=${group} \
+    --prefix=${prefix}
+
+  if (( UID == 0 ))
+  then
+    profile_path=/etc/profile.d/
+  else
+    [[ ! -d "${profile_path}" ]] && mkdir -p
+    ensure_paths_exist
+    profile_path="$HOME/."
+
+  fi
+
+  cp "$extension_templates_path/profile.d.openpkg.sh" "$profile_path/openpkg.sh"
+
+}

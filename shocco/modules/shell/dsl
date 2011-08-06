@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+shocco_fetch()
+{
+  local shocco_src_path="${src_path}/$(scm_identifier "${package_base_url}")/"
+  fetch_uri ${package_base_url} ${shocco_src_path}
+  ln -s ${shocco_src_path} "${src_path}/${extension}-head"
+}

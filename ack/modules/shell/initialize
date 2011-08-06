@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+package_definition \
+  base_url "https://github.com/petdance/ack/tarball/${package_version}"
+

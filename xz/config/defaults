@@ -1,0 +1,4 @@
+version=5.0.2
+base_url=http://tukaani.org/xz
+archive_format=tar.bz2
+website_url=http://tukaani.org/xz/

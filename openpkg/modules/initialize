@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+fail "BDSM Extension '${extension}' has not been implemented yet."
+
+openpkg_url="http://openpkg.org/go/download/openpkg.src.sh"
+
+if [[ $UID -eq 0 ]] ; then
+  true "${openpkg_user:=pkg}"
+  true "${openpkg_group:=pkg}"
+  true "${openpkg_prefix:=/pkg}"
+else
+  true "${openpkg_user:=pkg}"
+  true "${openpkg_group:=pkg}"
+  true "${openpkg_prefix:="$HOME/pkg"}"
+fi
+
+# Requires least 150MB free disk space
+ensure_paths_exist "${prefix}/tmp"
+
+
+

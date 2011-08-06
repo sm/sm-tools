@@ -1,0 +1,5 @@
+version=2.70
+base_url=https://rvm.beginrescueend.com/src
+# base_url=ftp://ftp.joedog.org/pub/siege
+archive_format=tar.gz
+website=http://www.joedog.org/index/siege-home

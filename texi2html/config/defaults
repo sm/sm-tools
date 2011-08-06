@@ -1,0 +1,4 @@
+version=1.64
+base_url=http://www.mathematik.uni-kl.de/~obachman/Texi2html/Distrib
+archive_format=tar.gz
+website_url=http://www.mathematik.uni-kl.de/~obachman/Texi2html/

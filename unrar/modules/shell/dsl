@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+unrar_configure()
+{
+  replace_content "^DESTDIR=.*$" \
+    with "DESTDIR=${install_path}" \
+    in "makefile.unix"
+}
+
+unrar_postfetch()
+{
+  if [[ -d unrar ]]
+  then
+    mv unrar/* .
+    rm -rf unrar
+  fi
+}
+
+unrar_build()
+{
+  make --makefile makefile.unix
+}
+
+unrar_install()
+{
+  ensure_paths_exist "${install_path}/bin"
+  move_file "unrar" to "${install_path}/bin"
+  ensure_files_are_executable "${install_path}/bin/unrar"
+}
+

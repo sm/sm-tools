@@ -1,0 +1,3 @@
+version=2.3.4
+base_url=ftp://vsftpd.beasts.org/users/cevans
+archive_format=tar.gz

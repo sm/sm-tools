@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+package_definition \
+  file "unrarsrc-${package_version}.${archive_format}" \
+  dir "unrarsrc-${package_version}"
+

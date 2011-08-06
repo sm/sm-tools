@@ -1,0 +1,3 @@
+version=0.0.22
+base_url=https://fedorahosted.org/releases/x/m/xmlto
+archive_format=tar.bz2
