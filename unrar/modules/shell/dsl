@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+unrar_initialize()
+{
+  package_definition \
+    file "unrarsrc-${package_version}.${archive_format}" \
+    dir "unrarsrc-${package_version}"
+}
+
 unrar_configure()
 {
   replace_content "^DESTDIR=.*$" \
