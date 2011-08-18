@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+htop_initialize()
+{
+  os_is_linux || error "htop may only be installed on Linux at this time."
+
+  package_definition \
+    base_url "http://downloads.sourceforge.net/project/htop/${package_version}"
+}
