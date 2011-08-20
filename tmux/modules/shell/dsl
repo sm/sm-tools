@@ -1,4 +1,12 @@
-#!/usr/bin/env bash
+#!/bin/sh
+
+tmux_initialize()
+{
+  package_dependencies=( libevent )
+
+  package_definition \
+    base_url "http://downloads.sourceforge.net/project/tmux/tmux/tmux-${package_version}"
+}
 
 tmux_configure()
 {

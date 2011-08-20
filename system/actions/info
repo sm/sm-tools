@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 cat << Info
 init_scripts_path: $(init_scripts_path)

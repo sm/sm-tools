@@ -1,0 +1,7 @@
+#!/bin/sh
+
+ctags_initialize()
+{
+  package_definition \
+    base_url "http://downloads.sourceforge.net/project/ctags/ctags/${package_version}"
+}
