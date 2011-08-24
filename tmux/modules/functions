@@ -2,8 +2,6 @@
 
 tmux_initialize()
 {
-  package_dependencies=( libevent )
-
   package_definition \
     base_url "http://downloads.sourceforge.net/project/tmux/tmux/tmux-${package_version}"
 }
@@ -11,10 +9,12 @@ tmux_initialize()
 tmux_configure()
 {
   package_must_be_active "libevent"
+  package_must_be_active "ncurses"
 
-  # Ensure that libevent is in the search paths.
-  export CFLAGS="-I${active_path}/include"
-  export LDFLAGS="-L${active_path}/lib"
+  configure_flags+=( --enable-static )
+
+  #export CFLAGS="-I${active_path}/include"
+  #export LDFLAGS="-L${active_path}/lib" #  -lresolv"
 
   package_configure
 }
