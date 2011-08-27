@@ -2,6 +2,6 @@
 
 siege_install()
 {
-  ensure_paths_exist "${install_path}/etc" "${install_path}/var"
+  paths create "${install_path}/etc" "${install_path}/var"
   package_make_install
 }

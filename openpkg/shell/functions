@@ -17,7 +17,7 @@ openpkg_initialize()
   fi
 
   # Requires least 150MB free disk space
-  ensure_paths_exist "${prefix}/tmp"
+  paths create "${prefix}/tmp"
 }
 
 openpkg_install() {
@@ -53,8 +53,7 @@ openpkg_install() {
   then
     profile_path=/etc/profile.d/
   else
-    [[ ! -d "${profile_path}" ]] && mkdir -p
-    ensure_paths_exist
+    paths create "${profile_path}"
     profile_path="$HOME/."
 
   fi

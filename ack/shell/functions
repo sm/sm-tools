@@ -8,7 +8,7 @@ ack_initialize()
 
 package_install()
 {
-  ensure_paths_exist "${source_path}/${package_dir}/bin" "${install_path}/bin"
+  paths create "${source_path}/${package_dir}/bin" "${install_path}/bin"
 
   curl \
     -L http://betterthangrep.com/ack-standalone \

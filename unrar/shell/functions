@@ -30,7 +30,7 @@ unrar_build()
 
 unrar_install()
 {
-  ensure_paths_exist "${install_path}/bin"
+  paths create "${install_path}/bin"
   move_file "unrar" to "${install_path}/bin"
   ensure_files_are_executable "${install_path}/bin/unrar"
 }
