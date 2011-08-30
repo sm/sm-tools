@@ -2,7 +2,7 @@
 
 unrar_initialize()
 {
-  package_definition \
+  package define \
     file "unrarsrc-${package_version}.${archive_format}" \
     dir "unrarsrc-${package_version}"
 }

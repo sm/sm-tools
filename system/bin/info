@@ -10,7 +10,7 @@ os_arch_capable:   $(os_arch_capable)
 os_cpu_count:      $(os_cpu_count)
 Info
 
-if os_is_linux
+if os is linux
 then
   log "free_memory: $(free -m | head -2)"
 fi

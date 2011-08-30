@@ -2,7 +2,7 @@
 
 ack_initialize()
 {
-  package_definition \
+  package define \
     base_url "https://github.com/petdance/ack/tarball/${package_version}"
 }
 

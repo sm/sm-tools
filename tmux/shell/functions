@@ -2,7 +2,7 @@
 
 tmux_initialize()
 {
-  package_definition \
+  package define \
     base_url "http://downloads.sourceforge.net/project/tmux/tmux/tmux-${package_version}"
 }
 
