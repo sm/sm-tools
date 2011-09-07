@@ -1,7 +1,14 @@
 #!/bin/sh
 
-siege_preinstall()
+siege_install()
 {
-  paths create "${install_path}/etc" "${install_path}/var"
+  paths create recursive "${install_path}"/{bin,etc,var}
+
+  file copy force from "doc/siegerc"  to "${install_path}/etc/siegerc"
+  file copy force from "doc/urls.txt" to "${install_path}/etc/urls.txt"
+  file copy force from "src/siege"    to "${install_path}/bin/siege"
+
+  package make install
+  package activate first
 }
 
