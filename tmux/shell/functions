@@ -8,8 +8,8 @@ tmux_prefetch()
 
 tmux_configure()
 {
-  package_must_be_active "libevent"
-  package_must_be_active "ncurses"
+  package must be active "libevent"
+  package must be active "ncurses"
 
   configure_flags+=( --enable-static )
 
