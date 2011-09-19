@@ -1,6 +1,6 @@
 #!/bin/sh
 
-tmux_initialize()
+tmux_prefetch()
 {
   package define \
     base_url "http://downloads.sourceforge.net/project/tmux/tmux/tmux-${package_version}"
