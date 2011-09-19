@@ -8,9 +8,6 @@ tmux_prefetch()
 
 tmux_configure()
 {
-  package must be active "libevent"
-  package must be active "ncurses"
-
   configure_flags+=( --enable-static )
 
   #export CFLAGS="-I${active_path}/include"
