@@ -13,5 +13,5 @@ tmux_configure()
   #export CFLAGS="-I${active_path}/include"
   #export LDFLAGS="-L${active_path}/lib" #  -lresolv"
 
-  package_configure
+  package configure
 }
