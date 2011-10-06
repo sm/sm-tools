@@ -7,5 +7,6 @@ htop_initialize()
 
 htop_prefetch()
 {
-  package_url "http://downloads.sourceforge.net/project/htop/htop/${package_version}/htop-${package_version}.tar.gz" # ?use_mirror=voxel
+  typeset -g package_url
+  package_url="http://downloads.sourceforge.net/project/htop/htop/${package_version}/htop-${package_version}.tar.gz" # ?use_mirror=voxel
 }
