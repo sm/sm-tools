@@ -1,6 +1,6 @@
 #!/bin/sh
 
-unrar_initialize()
+unrar_prefetch()
 {
   package define \
     file "unrarsrc-${package_version}.${archive_format}" \
@@ -9,7 +9,8 @@ unrar_initialize()
 
 unrar_configure()
 {
-  replace_content "^DESTDIR=.*$" \
+  file replace \
+    content "^DESTDIR=.*$" \
     with "DESTDIR=${install_path}" \
     in "makefile.unix"
 }
@@ -31,7 +32,7 @@ unrar_build()
 unrar_install()
 {
   paths create "${install_path}/bin"
-  move_file "unrar" to "${install_path}/bin"
-  ensure_files_are_executable "${install_path}/bin/unrar"
+  file move "unrar" to "${install_path}/bin"
+  file chmod 755 "${install_path}/bin/unrar"
 }
 

@@ -1,0 +1,61 @@
+#!/bin/sh
+
+bzip2_configure()
+{
+  file replace \
+    regexp PREFIX=/usr/local \
+    string PREFIX=${install_path} \
+    in "${source_path}/${package_dir}/Makefile"
+
+  file replace \
+    regexp '$(CC) -shared ' \
+    string '$(CC) $(CFLAGS) -shared ' \
+    in "${source_path}/${package_dir}/Makefile-libbz2_so"
+
+  __sm.log.debug package "bzip2 does not need configure step ???"
+}
+
+bzip2_build()
+{
+  #Order is important to keep proper CFLAGS ...
+  bzip2_build_so
+  __sm.package.gnu.make
+}
+
+bzip2_build_so()
+{
+  typeset _command
+  _command="make -f Makefile-libbz2_so ${make_flags[@]:-"-j$(os cpu count)"}"
+  __sm.log.debug package "bzip_build_so: ${_command}"
+
+  export CFLAGS="${CFLAGS} -fpic -fPIC"
+  export PREFIX=${install_path}
+
+  ${=_command} > build_so.log 2>&1 ||
+    __sm.package.error \
+    "Compilation of ${package_name} ${package_version} failed! " "$PWD/build_so.log"
+}
+
+bzip2_install()
+{
+  bzip2_make_install
+  __sm.package.make.install
+}
+
+bzip2_make_install()
+{
+  trace_filter package || set -o xtrace
+  typeset _command
+  export PREFIX=${install_path}
+
+  __sm.log.step "${package_name} ${package_version} ~ install so"
+  (
+    mkdir -p ${PREFIX}/lib
+	  cp -f libbz2.so.1.0.6 ${PREFIX}/lib/libbz2.so.1.0.6
+	  chmod a+r ${PREFIX}/lib/libbz2.so.1.0.6
+	) > make.install_so.log 2>&1 ||
+    __sm.package.error \
+      "Installation of lib${package_name}.so ${package_version} failed! " \
+      "$PWD/make.install_so.log"
+  __sm.log.step success
+}
