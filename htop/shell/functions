@@ -3,7 +3,10 @@
 htop_initialize()
 {
   os is linux || error "htop may only be installed on Linux at this time."
+}
 
+htop_prefetch()
+{
   package define \
     base_url "http://downloads.sourceforge.net/project/htop/${package_version}"
 }
