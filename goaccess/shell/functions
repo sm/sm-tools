@@ -1,0 +1,46 @@
+#!/bin/sh
+
+goaccess_cli()
+{
+  # if extension_args contains --enable-geoip # Enable IP location information using GeoIP
+  # then
+  #   configure_flags+=(--enable-geoip)
+  #   package_dependencies+=(geoip)
+  # fi
+  true
+}
+
+goaccess_initialize()
+{
+  true
+  # package_dependencies=(pkg-config glib)
+}
+
+goaccess_initialize()
+{
+  if ! os is linux
+  then
+    log error "goaccess may only be installed on Linux at this time."
+  fi
+}
+
+goaccess_prefetch()
+{
+  typeset -g package_url
+  package_url="http://downloads.sourceforge.net/project/goaccess/${package_version}/${package_name}-${package_version}.${archive_format}"
+}
+
+goaccess_preconfigure()
+{
+  # How best to test for glib & geoip (optionally)?
+  if ! command exists pkg-config
+  then
+    log error "goaccess requires pkg-config in order to build. Please install pkg-config and then retry."
+  fi
+
+  configure_flags+=(
+  "--disable-debug"
+  "--disable-dependency-tracking"
+  )
+}
+
