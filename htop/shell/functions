@@ -3,7 +3,10 @@
 htop_initialize()
 {
   os is linux || error "htop may only be installed on Linux at this time."
+}
 
-  package define \
-    base_url "http://downloads.sourceforge.net/project/htop/${package_version}"
+htop_prefetch()
+{
+  typeset -g package_url
+  package_url="http://downloads.sourceforge.net/project/htop/htop/${package_version}/htop-${package_version}.tar.gz" # ?use_mirror=voxel
 }
