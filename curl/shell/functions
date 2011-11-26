@@ -1,6 +1,0 @@
-#!/bin/sh
-
-curl_prefetch()
-{
-  package configure flags "--with-ssl=${active_path}"
-}
