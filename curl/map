@@ -1,2 +1,2 @@
-
+generate/certs=curl_generate_cert()
 setup=setup

@@ -1,0 +1,37 @@
+#!/bin/sh
+
+curl_preconfigure()
+{
+  package configure flags "--with-ca-bundle=${install_path}/lib/ca-bundle.crt"
+}
+
+curl_postinstall()
+{
+  curl_generate_cert silent
+}
+
+curl_generate_cert()
+{
+  if [[ -z "${source_path}" ]]
+  then __sm.package.init
+  fi
+
+  if [[ -d ${source_path}/${package_dir}/lib ]]
+  then
+    (
+      builtin cd "${source_path}/${package_dir}/lib"
+      pwd
+      ls -l | less
+      if ./mk-ca-bundle.pl
+      then
+        install ca-bundle.crt ${install_path}/lib/ca-bundle.crt
+        [[ "$1" == "silent" ]] || __sm.log.log "Certificates updated." >&2
+      else
+        [[ "$1" == "silent" ]] || __sm.log.error "Can not update certificates." >&2
+      fi
+    ) >/dev/null
+  else
+    __sm.log.error "Please install curl first."
+    return 1
+  fi
+}
