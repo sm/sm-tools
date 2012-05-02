@@ -1,3 +1,4 @@
 version=0.25
 base_url=http://pkg-config.freedesktop.org/releases
 archive_format=tar.gz
+configure_flag_static=--enable-static
