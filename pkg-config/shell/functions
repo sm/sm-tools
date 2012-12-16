@@ -1,0 +1,6 @@
+#!/bin/sh
+
+pkgconfig_preconfigure()
+{
+  __sm.package.configure.flags --with-pc-path="${active_path}/lib/pkgconfig:${active_path}/lib64/pkgconfig"
+}
